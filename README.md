@@ -30,22 +30,22 @@ client = FleetApp::Client.new
 
 Start a Server
 ```crystal
-FleetApp::Server.start("2012197.xyz", "valheim", "1234", "")
+FleetApp::Server.start("2012197.xyz", "valheim", "1234")
 ```
 
 Stop a Server
 ```crystal
-FleetApp::Server.stop("2012197.xyz", "valheim", "1234", "")
+FleetApp::Server.stop("2012197.xyz", "valheim", "1234")
 ```
 
 Restart a Server
 ```crystal
-FleetApp::Server.restart("2012197.xyz", "valheim", "1234", "")
+FleetApp::Server.restart("2012197.xyz", "valheim", "1234")
 ```
 
 Create a Server
 ```crystal
-FleetApp::Server.create("2012197.xyz", "valheim", "1234", "")
+FleetApp::Server.create("2012197.xyz", "valheim", "1234")
 ```
 
 Get Server Details (For Other Games)

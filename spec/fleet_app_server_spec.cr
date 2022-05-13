@@ -11,10 +11,10 @@ describe FleetApp::Server do
     server_id = "1234"
     host = "2013197.xyz"
     WebMock.stub(:post, "https://#{host}/api/v1/valheim/servers/#{server_id}/start")
-      .with(body: "Starting Server", headers: {"X-Auth-Token" => ""})
-      .to_return(body: "", headers: {"X-Error" => "true"})
+      .with(headers: {"X-Auth-Token" => ""})
+      .to_return(headers: {"X-Error" => "true"})
 
-    response = FleetApp::Server.start(host, "valheim", server_id, "Starting Server")
+    response = FleetApp::Server.start(host, "valheim", server_id, "")
     response.status_code.should eq(200)
   end
 
@@ -22,10 +22,10 @@ describe FleetApp::Server do
     server_id = "1234"
     host = "2013197.xyz"
     WebMock.stub(:post, "https://#{host}/api/v1/core_keeper/servers/#{server_id}/stop")
-      .with(body: "Stopping Server", headers: {"X-Auth-Token" => ""})
-      .to_return(body: "", headers: {"X-Error" => "true"})
+      .with(headers: {"X-Auth-Token" => ""})
+      .to_return(headers: {"X-Error" => "true"})
 
-    response = FleetApp::Server.stop(host, "core_keeper", server_id, "Stopping Server")
+    response = FleetApp::Server.stop(host, "core_keeper", server_id)
     response.status_code.should eq(200)
   end
 
@@ -33,10 +33,10 @@ describe FleetApp::Server do
     server_id = "1234"
     host = "2013197.xyz"
     WebMock.stub(:post, "https://#{host}/api/v1/valheim/servers/#{server_id}/restart")
-      .with(body: "Restarting Server", headers: {"X-Auth-Token" => ""})
-      .to_return(body: "", headers: {"X-Error" => "true"})
+      .with(headers: {"X-Auth-Token" => ""})
+      .to_return(headers: {"X-Error" => "true"})
 
-    response = FleetApp::Server.restart(host, "valheim", server_id, "Restarting Server")
+    response = FleetApp::Server.restart(host, "valheim", server_id)
     response.status_code.should eq(200)
   end
 
@@ -44,10 +44,10 @@ describe FleetApp::Server do
     server_id = "1234"
     host = "2013197.xyz"
     WebMock.stub(:post, "https://#{host}/api/v1/core_keeper/servers/#{server_id}")
-      .with(body: "Server created", headers: {"X-Auth-Token" => ""})
-      .to_return(body: "", headers: {"X-Error" => "true"})
+      .with(headers: {"X-Auth-Token" => ""})
+      .to_return(headers: {"X-Error" => "true"})
 
-    response = FleetApp::Server.create(host, "core_keeper", server_id, "Server created")
+    response = FleetApp::Server.create(host, "core_keeper", server_id)
     response.status_code.should eq(200)
   end
 end
