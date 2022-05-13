@@ -55,7 +55,7 @@ FleetApp::Server.get_details("2012197.xyz", "valheim", "1234")
 
 Get CoreKeeper Game ID
 ```crystal
-FleetApp::Server.get_details("2012197.xyz", "valheim", "1234")
+FleetApp::Server.get_details("2012197.xyz", "core_keeper", "1234")
 ```
 
 
