@@ -1,0 +1,8 @@
+{
+    "world_name": "Odin's World",
+    "world_index": 0,
+    "world_seed" : "0",
+    "max_players" : 10,
+    "game_id": "1",
+    "data_path": ""
+}
