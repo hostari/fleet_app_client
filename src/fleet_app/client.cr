@@ -12,7 +12,7 @@ module FleetApp
     # Returns the base url for which this client will make API requests to
     def base_url : URI
       if host.starts_with?("localhost")
-
+        URI.parse("http://#{host}")
       else
         URI.parse("https://#{host}")
       end
