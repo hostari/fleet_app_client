@@ -30,32 +30,32 @@ client = FleetApp::Client.new
 
 Start a Server
 ```crystal
-FleetApp::Server.start(host, "valheim", server_id, "Starting Server")
+FleetApp::Server.start("2012197.xyz", "valheim", "1234", "")
 ```
 
 Stop a Server
 ```crystal
-FleetApp::Server.stop(host, "core_keeper", server_id, "Starting Server")
+FleetApp::Server.stop("2012197.xyz", "valheim", "1234", "")
 ```
 
 Restart a Server
 ```crystal
-FleetApp::Server.restart(host, "valheim", server_id, "Starting Server")
+FleetApp::Server.restart("2012197.xyz", "valheim", "1234", "")
 ```
 
 Create a Server
 ```crystal
-FleetApp::Server.create(host, "core_keeper", server_id, "Starting Server")
+FleetApp::Server.create("2012197.xyz", "valheim", "1234", "")
 ```
 
 Get Server Details (For Other Games)
 ```crystal
-FleetApp::Server.get_details(host, "valheim", server_id, "Starting Server")
+FleetApp::Server.get_details("2012197.xyz", "valheim", "1234")
 ```
 
 Get CoreKeeper Game ID
 ```crystal
-FleetApp::Server.get_details(host, "core_keeper", server_id, "Starting Server")
+FleetApp::Server.get_details("2012197.xyz", "valheim", "1234")
 ```
 
 
