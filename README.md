@@ -20,7 +20,45 @@ TODO: Write a description here
 require "fleet_app_client"
 ```
 
-TODO: Write usage instructions here
+Build a new FleetApp client.
+
+```crystal
+client = FleetApp::Client.new
+```
+
+## Resource Methods
+
+Start a Server
+```crystal
+FleetApp::Server.start(host, "valheim", server_id, "Starting Server")
+```
+
+Stop a Server
+```crystal
+FleetApp::Server.stop(host, "core_keeper", server_id, "Starting Server")
+```
+
+Restart a Server
+```crystal
+FleetApp::Server.restart(host, "valheim", server_id, "Starting Server")
+```
+
+Create a Server
+```crystal
+FleetApp::Server.create(host, "core_keeper", server_id, "Starting Server")
+```
+
+Get Server Details (For Other Games)
+```crystal
+FleetApp::Server.get_details(host, "valheim", server_id, "Starting Server")
+```
+
+Get CoreKeeper Game ID
+```crystal
+FleetApp::Server.get_details(host, "core_keeper", server_id, "Starting Server")
+```
+
+
 
 ## Development
 
