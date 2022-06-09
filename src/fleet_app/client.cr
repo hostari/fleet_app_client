@@ -2,7 +2,7 @@ module FleetApp
   class Client
     property host : String
 
-    def initialize(@host : String)
+    def initialize(@host : String = FleetAppClient::HOST)
     end
 
     def set_host(host)
