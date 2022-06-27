@@ -1,4 +1,5 @@
 module FleetApp
+  # The "sad" result from an API call.
   class ErrorResult
     include JSON::Serializable
 
@@ -8,6 +9,7 @@ module FleetApp
     getter message : String
     getter status_code : Int32
 
+    # Returns `true` if `status_code` is `200`, `false` otherwise.
     def success?
       status_code == 200
     end

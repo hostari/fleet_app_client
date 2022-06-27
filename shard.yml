@@ -1,8 +1,9 @@
 name: fleet_app_client
-version: 0.1.3
+version: 0.1.4
 
 authors:
-  - Pauline De Polonia <paudepolonia000@yahoo.com>
+  - Pauline De Polonia <pauline@hostari.com>
+  - Xavi Ablaza <xavi@hostari.com>
 
 crystal: 1.4.1
 
