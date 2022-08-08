@@ -17,11 +17,11 @@ module FleetApp
       end
     end
 
-    def post(game_name : String, path : String, body : String)
+    def post(game_name : String, path : String, body : String, basic_auth : String)
       begin
         raise FleetApp::Error.new("Game '#{game_name}' not supported.") if !FleetApp::Game::LIST.includes?(game_name)
 
-        response = @client.post(path, body)
+        response = @client.post(path, body, basic_auth)
 
         if response.status_code == 200
           ApiResult.from_json(response.body)
