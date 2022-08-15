@@ -25,5 +25,14 @@ module FleetApp
         body: body
       )
     end
+
+    def self.create_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production")
+      FleetApp::ClientWrapper.new(environment).post_with_auth(
+        game_name: game_name,
+        path: ApiPath.new(game_name, server_id, host).path,
+        body: body,
+        basic_auth: basic_auth
+      )
+    end
   end
 end
