@@ -15,8 +15,16 @@ module FleetApp
       # or a `server_id` from VSH.
       #
       # Use `command` to specify the command to be executed using brooce.
-      def self.create(host : String, game_name : String, server_id : String, basic_auth : String, command : String = "", environment : String = "production")
+      def self.create(host : String, game_name : String, server_id : String, command : String = "", environment : String = "production")
         FleetApp::ClientWrapper.new(environment).post(
+          game_name: game_name,
+          path: "/api/v1/#{game_name}/servers/#{server_id}/brooce_command?queue_name=#{host}",
+          body: {command: command}.to_json
+        )
+      end
+
+      def self.create_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, command : String = "", environment : String = "production")
+        FleetApp::ClientWrapper.new(environment).post_with_auth(
           game_name: game_name,
           path: "/api/v1/#{game_name}/servers/#{server_id}/brooce_command?queue_name=#{host}",
           body: {command: command}.to_json,

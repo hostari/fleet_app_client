@@ -21,8 +21,16 @@ module FleetApp
     # For example, you can send this: `{command: "echo 'foobar'"}.to_json`
     #
     # `environment` is an optional string that specifies which fleet app to send the request to.
-    def self.start(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production")
+    def self.start(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production")
       FleetApp::ClientWrapper.new(environment).post(
+        game_name: game_name,
+        path: ApiPath.new(game_name, server_id, host, "start").path,
+        body: body
+      )
+    end
+
+    def self.start_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production")
+      FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
         path: ApiPath.new(game_name, server_id, host, "start").path,
         body: body,

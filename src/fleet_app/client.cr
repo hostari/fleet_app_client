@@ -25,7 +25,13 @@ module FleetApp
     end
 
     # Performs a POST request on the path with a body.
-    def post(path : String, body : String, basic_auth : String)
+    def post(path : String, body : String)
+      HTTP::Client.new(base_url)
+        .post(path, headers: HTTP::Headers{"X-Auth-Token" => ""}, body: body)
+    end
+
+    # Performs a POST request on the path with a body and authentication.
+    def post_with_auth(path : String, body : String, basic_auth : String)
       header = HTTP::Headers.new
       headers = header.add("Authorization", "Basic #{basic_auth}")
       HTTP::Client.new(base_url)
