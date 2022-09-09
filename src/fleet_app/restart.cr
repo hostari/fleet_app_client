@@ -24,7 +24,7 @@ module FleetApp
     def self.restart(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production", username : String = "")
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, username, "restart").path,
+        path: ApiPath.new(game_name, server_id, host, username: username, action: "restart").path,
         body: body
       )
     end
@@ -32,7 +32,7 @@ module FleetApp
     def self.restart_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production", username : String = "")
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, username, "restart").path,
+        path: ApiPath.new(game_name, server_id, host, username: username, action: "restart").path,
         body: body,
         basic_auth: basic_auth
       )
