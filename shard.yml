@@ -1,9 +1,10 @@
 name: fleet_app_client
-version: 0.1.6
+version: 0.1.7
 
 authors:
   - Pauline De Polonia <pauline@hostari.com>
   - Xavi Ablaza <xavi@hostari.com>
+  - Manuel Tinio <manuel@hostari.com>
 
 crystal: 1.4.1
 

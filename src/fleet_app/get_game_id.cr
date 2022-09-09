@@ -17,7 +17,7 @@ module FleetApp
     def self.get_game_id(host : String, game_name : String, server_id : String, environment : String = "production")
       FleetApp::ClientWrapper.new(environment).get(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "game_id").path
+        path: ApiPath.new(game_name, server_id, host, action: "game_id").path
       )
     end
   end
