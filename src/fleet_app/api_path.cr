@@ -4,10 +4,14 @@ module FleetApp
 
     API_VERSION = "v1"
 
-    def initialize(game_name : String, server_id : String, host : String, action : String = "")
-      if action == ""
+    def initialize(game_name : String, server_id : String, host : String, username : String = "", action : String = "")
+      if action == "" && username == ""
         @path = "/api/#{API_VERSION}/#{game_name}/servers/#{server_id}?queue_name=#{host}"
-      else
+      elsif action == "" && !username == ""
+        @path = "/api/#{API_VERSION}/#{game_name}/servers/#{server_id}?queue_name=#{host}&username=#{username}"
+      elsif !action == "" && !username == ""
+        @path = "/api/#{API_VERSION}/#{game_name}/servers/#{server_id}/#{action}?queue_name=#{host}&username=#{username}"
+      elsif !action == "" && username == ""
         @path = "/api/#{API_VERSION}/#{game_name}/servers/#{server_id}/#{action}?queue_name=#{host}"
       end
     end
