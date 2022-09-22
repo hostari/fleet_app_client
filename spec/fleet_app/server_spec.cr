@@ -181,4 +181,28 @@ describe FleetApp::Server do
       result.should be_a(FleetApp::ErrorResult)
     end
   end
+  describe ".install_oxide" do
+    it "returns an API result" do
+      server_id = "1234"
+      root_path = "https://fleet.hostari.com"
+      queue_name = "sample.host"
+      WebMock.stub(:post, "#{root_path}/api/v1/rust/servers/#{server_id}/install_oxide?queue_name=#{queue_name}&username=#{server_id}")
+        .with(body: "", headers: {"X-Auth-Token" => ""})
+        .to_return(status: 200, body: File.read("spec/support/rust/servers/install_oxide.json"))
+      result = FleetApp::Server.install_oxide(queue_name, "rust", server_id, environment: "production", username: server_id)
+      result.should be_a(FleetApp::ApiResult)
+    end
+  end
+  describe ".update" do
+    it "returns an API result" do
+      server_id = "1234"
+      root_path = "https://fleet.hostari.com"
+      queue_name = "sample.host"
+      WebMock.stub(:post, "#{root_path}/api/v1/rust/servers/#{server_id}/update?queue_name=#{queue_name}&username=#{server_id}")
+        .with(body: "", headers: {"X-Auth-Token" => ""})
+        .to_return(status: 200, body: File.read("spec/support/rust/servers/update.json"))
+      result = FleetApp::Server.update(queue_name, "rust", server_id, environment: "production", username: server_id)
+      result.should be_a(FleetApp::ApiResult)
+    end
+  end
 end
