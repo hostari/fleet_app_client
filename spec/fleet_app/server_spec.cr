@@ -190,7 +190,7 @@ describe FleetApp::Server do
         .with(body: "", headers: {"X-Auth-Token" => ""})
         .to_return(status: 200, body: File.read("spec/support/rust/servers/install_oxide.json"))
       result = FleetApp::Server.install_oxide(queue_name, "rust", server_id, environment: "production", username: server_id)
-      result.should be_a(FleetApp::ApiResult) 
+      result.should be_a(FleetApp::ApiResult)
     end
   end
   describe ".update" do
@@ -202,8 +202,7 @@ describe FleetApp::Server do
         .with(body: "", headers: {"X-Auth-Token" => ""})
         .to_return(status: 200, body: File.read("spec/support/rust/servers/update.json"))
       result = FleetApp::Server.update(queue_name, "rust", server_id, environment: "production", username: server_id)
-      result.should be_a(FleetApp::ApiResult) 
+      result.should be_a(FleetApp::ApiResult)
     end
   end
-
 end
