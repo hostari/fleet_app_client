@@ -39,7 +39,7 @@ module FleetApp
     end
 
     def self.standardize_world_name(world_name)
-      world_name.gsub(" ", "_")
+      URI.encode_path(world_name)
     end
   end
 end
