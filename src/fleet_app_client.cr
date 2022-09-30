@@ -1,5 +1,6 @@
 require "json"
 require "http/client"
+require "uri/params"
 
 class FleetAppClient
   VERSION      = "0.2.2"
