@@ -24,7 +24,7 @@ module FleetApp
     def self.wipe_world(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production", username : String = "", world_name : String = "")
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPathV2.new(game_name, server_id, host, {action: "wipe_world", params: {"username" => username, "world_name" => world_name}}).path,
+        path: ApiPath.new(game_name, server_id, host, username: username, action: "wipe_world", world_name: standardize_world_name(world_name)).path,
         body: body
       )
     end
