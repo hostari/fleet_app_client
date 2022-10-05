@@ -13,10 +13,13 @@ module FleetApp
       end
     end
 
+    # returns the query string generated from `params`
     private def query_string(params : Hash(String, String))
       params = URI::Params.build do |form|
+        # queue_name is always included
         form.add "queue_name", @host
         params.each do |param, value|
+          # only add non-empty strings
           form.add param, value if !value.empty?
         end
       end
