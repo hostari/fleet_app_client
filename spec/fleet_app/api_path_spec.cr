@@ -27,8 +27,8 @@ describe FleetApp::ApiPath do
       api_path.path.should eq("/api/v1/valheim/servers/1/start?queue_name=sample.host&username=testuser1&world_name=World1")
     end
     it "returns the correct path when initialized with only a world" do
-      api_path = FleetApp::ApiPath.new("valheim", "1", "sample.host", params: {"world_name" => "World1"})
-      api_path.path.should eq("/api/v1/valheim/servers/1?queue_name=sample.host&world_name=World1")
+      api_path = FleetApp::ApiPath.new("valheim", "1", "sample.host", params: {"world_name" => "World 1"})
+      api_path.path.should eq("/api/v1/valheim/servers/1?queue_name=sample.host&world_name=World+1")
     end
     it "returns the correct path when initialized with arbitrary parameters" do
       params = {"param1" => "random_param", "foo" => "bar", "fizz" => "buzz"}
