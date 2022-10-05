@@ -1,7 +1,9 @@
 module FleetApp
   # Wraps over the client's response bodies and returns result objects.
   class ClientWrapper
-    def initialize(environment : String, client : FleetApp::Client? = nil)
+    getter client : FleetApp::Client
+
+    def initialize(@environment : String, client : FleetApp::Client? = nil)
       @environment = environment
 
       if client
@@ -9,10 +11,14 @@ module FleetApp
         @client = client.not_nil!
       else
         # Instantiate a client based on the environment passed in
-        if @environment == "production"
+        case @environment
+        when "production"
           @client = FleetApp::Client.new
-        else
+        when "staging", "sandbox"
           @client = FleetApp::Client.new(FleetAppClient::SANDBOX_HOST)
+        else
+          # use localhost for "test" and "development" environments
+          @client = FleetApp::Client.new(FleetAppClient::DEVELOPMENT_HOST)
         end
       end
     end
