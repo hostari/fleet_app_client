@@ -3,7 +3,7 @@ module FleetApp
     getter path : String
 
     API_VERSION = "v1"
-    BASE_PATH = "/api/#{API_VERSION}"
+    BASE_PATH   = "/api/#{API_VERSION}"
 
     def initialize(game_name : String, server_id : String, @host : String, action : String? = nil, params : Hash(String, String) = {} of String => String)
       if !action.nil?
