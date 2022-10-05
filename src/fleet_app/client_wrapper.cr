@@ -3,7 +3,7 @@ module FleetApp
   class ClientWrapper
     getter client : FleetApp::Client
 
-    def initialize(@environment : String, client : FleetApp::Client? = nil)
+    def initialize(environment : String, client : FleetApp::Client? = nil)
       @environment = environment
 
       if client
