@@ -211,7 +211,7 @@ describe FleetApp::Server do
       root_path = "https://fleet.hostari.com"
       queue_name = "sample.host"
       world_name = "world numbah 1"
-      WebMock.stub(:post, "#{root_path}/api/v1/project_zomboid/servers/#{server_id}/wipe_world?queue_name=#{queue_name}&username=#{server_id}&world_name=#{world_name}")
+      WebMock.stub(:post, "#{root_path}/api/v1/project_zomboid/servers/#{server_id}/wipe_world?queue_name=#{queue_name}&username=#{server_id}&world_name=#{URI.encode_path(world_name)}")
         .with(body: "", headers: {"X-Auth-Token" => ""})
         .to_return(status: 200, body: File.read("spec/support/project_zomboid/servers/create.json"))
       result = FleetApp::Server.wipe_world(queue_name, "project_zomboid", server_id, environment: "production", username: server_id, world_name: world_name)
