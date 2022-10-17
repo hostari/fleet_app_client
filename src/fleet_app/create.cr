@@ -18,18 +18,18 @@ module FleetApp
     # For example, you can send this: `{command: "echo 'foobar'"}.to_json`
     #
     # `environment` is an optional string that specifies which fleet app to send the request to.
-    def self.create(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production", username : String = "")
+    def self.create(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production", username : String = "", version : String = "")
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, params: {"username" => username}).path,
+        path: ApiPath.new(game_name, server_id, host, params: {"username" => username, "version" => version}).path,
         body: body
       )
     end
 
-    def self.create_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production", username : String = "")
+    def self.create_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production", username : String = "", version : String = "")
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, params: {"username" => username}).path,
+        path: ApiPath.new(game_name, server_id, host, params: {"username" => username, "version" => version}).path,
         body: body,
         basic_auth: basic_auth
       )

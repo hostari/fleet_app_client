@@ -5,6 +5,7 @@ module FleetApp
     V_RISING        = "v_rising"
     PROJECT_ZOMBOID = "project_zomboid"
     RUST            = "rust"
+    TERRARIA        = "terraria"
 
     LIST = [
       VALHEIM,
@@ -12,6 +13,7 @@ module FleetApp
       V_RISING,
       PROJECT_ZOMBOID,
       RUST,
+      TERRARIA,
     ]
   end
 end
