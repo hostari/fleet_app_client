@@ -26,7 +26,7 @@ module FleetApp
     )
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "backup", {"username" => username, "world_name" => world_name, "backup_date" => backup_date, "server_type" => server_type}).path,
+        path: ApiPath.new(game_name, server_id, host, "backup", {"username" => username, "world_name" => world_name, "backup_date" => backup_date, "server_type" => server_type, "environment" => environment}).path,
         body: body
       )
     end
@@ -38,7 +38,7 @@ module FleetApp
     )
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "backup", {"username" => username, "world_name" => world_name, "backup_date" => backup_date, "server_type" => server_type}).path,
+        path: ApiPath.new(game_name, server_id, host, "backup", {"username" => username, "world_name" => world_name, "backup_date" => backup_date, "server_type" => server_type, "environment" => environment}).path,
         body: body,
         basic_auth: basic_auth
       )
