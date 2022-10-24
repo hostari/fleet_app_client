@@ -1,6 +1,8 @@
 module FleetApp
   class Server
-    # Creates a server for a game.
+    # Backs up the loaded world of the specified game.
+    #
+    # The server will need to be stopped, the target world will be backed up, then the server will be restarted.
     #
     # Use `host` to specify the queue name in brooce to send to.
     # For example, use `2013191.xyz` if the command should be executed on tms1.
@@ -18,18 +20,25 @@ module FleetApp
     # For example, you can send this: `{command: "echo 'foobar'"}.to_json`
     #
     # `environment` is an optional string that specifies which fleet app to send the request to.
-    def self.create(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production", username : String = "", server_type : String = "")
+    def self.backup(
+      host : String, game_name : String, server_id : String, body : String = "", environment : String = "production",
+      username : String = "", world_name : String = "", backup_date : String = "", server_type : String = ""
+    )
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, params: {"username" => username, "server_type" => server_type}).path,
+        path: ApiPath.new(game_name, server_id, host, "backup", {"username" => username, "world_name" => world_name, "backup_date" => backup_date, "server_type" => server_type}).path,
         body: body
       )
     end
 
-    def self.create_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production", username : String = "", server_type : String = "")
+    def self.backup_with_auth(
+      host : String, game_name : String, server_id : String, basic_auth : String, body : String = "",
+      environment : String = "production", username : String = "", world_name : String = "", backup_date : String = "",
+      server_type : String = ""
+    )
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, params: {"username" => username, "server_type" => server_type}).path,
+        path: ApiPath.new(game_name, server_id, host, "backup", {"username" => username, "world_name" => world_name, "backup_date" => backup_date, "server_type" => server_type}).path,
         body: body,
         basic_auth: basic_auth
       )
