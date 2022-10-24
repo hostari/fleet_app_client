@@ -24,11 +24,15 @@ module FleetApp
     def self.load_world(
       host : String, game_name : String, server_id : String, body : String = "",
       environment : String = "production", username : String = "", world_name : String = "",
-      server_type : String = ""
+      server_type : String = "", world_id : String = ""
     )
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "load_world", {"username" => username, "world_name" => world_name, "server_type" => server_type}).path,
+        path: ApiPath.new(
+          game_name, server_id, host, "load_world", {
+          "username" => username, "world_name" => world_name,
+          "server_type" => server_type, "world_id" => world_id,
+        }).path,
         body: body
       )
     end
@@ -36,11 +40,15 @@ module FleetApp
     def self.load_world_with_auth(
       host : String, game_name : String, server_id : String, basic_auth : String, body : String = "",
       environment : String = "production", username : String = "", world_name : String = "",
-      server_type : String = ""
+      server_type : String = "", world_id : String = ""
     )
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "load_world", {"username" => username, "world_name" => world_name, "server_type" => server_type}).path,
+        path: ApiPath.new(
+          game_name, server_id, host, "load_world", {
+          "username" => username, "world_name" => world_name,
+          "server_type" => server_type, "world_id" => world_id,
+        }).path,
         body: body,
         basic_auth: basic_auth
       )
