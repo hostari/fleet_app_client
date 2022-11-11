@@ -4,10 +4,7 @@ module FleetApp
     # unzips the file, and walks through each of the directories to extract the sha256 hashes from each file.
 
     # Host will always be tms7 and does not require a server_id.
-    #
-    # Use `game_name` to specify the game you are sending a brooce command for.
-    # See: `FleetApp::Game` for possible values.
-    #
+
     # `body` is an optional, JSON-formatted string that is sent as the request body which defaults to an empty string.
     # This is used to override the default command in fleet app.
     # For example, you can send this: `{command: "echo 'foobar'"}.to_json`
