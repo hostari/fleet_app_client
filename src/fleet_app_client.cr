@@ -2,7 +2,7 @@ require "json"
 require "http/client"
 
 class FleetAppClient
-  VERSION          = "0.2.5"
+  VERSION          = "0.2.6"
   HOST             = "fleet.hostari.com"
   SANDBOX_HOST     = "sandbox-#{HOST}"
   DEVELOPMENT_HOST = "localhost:2450"
