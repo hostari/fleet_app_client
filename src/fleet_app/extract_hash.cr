@@ -11,7 +11,7 @@ module FleetApp
     #
     # `environment` is an optional string that specifies which fleet app to send the request to.
 
-    def self.extract_hash(host : String, command : String = "", environment : String = "production", username : String = "")
+    def self.extract_hash(host : String, game_name : String, command : String = "", environment : String = "production", username : String = "")
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
         path: "/api/v1/mod_library/brooce_command?queue_name=#{host}",
@@ -19,7 +19,7 @@ module FleetApp
       )
     end
 
-    def self.extract_hash_with_auth(host : String, basic_auth : String, command : String = "", environment : String = "production", username : String = "")
+    def self.extract_hash_with_auth(host : String, game_name : String, basic_auth : String, command : String = "", environment : String = "production", username : String = "")
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
         path: "/api/v1/mod_library/brooce_command?queue_name=#{host}",
