@@ -1,7 +1,7 @@
 module FleetApp
   class Server
     class BrooceCommand
-      # Sends a brooce command to be executed.
+      # Sends a brooce command to be executed for a server.
       #
       # Use `host` to specify the queue name in brooce to send to.
       # For example, use `2013191.xyz` if the command should be executed on tms1.
