@@ -7,6 +7,7 @@ module FleetApp
     RUST            = "rust"
     TERRARIA        = "terraria"
     STARBOUND       = "starbound"
+    UNTURNED        = "unturned"
 
     LIST = [
       VALHEIM,
@@ -16,6 +17,7 @@ module FleetApp
       RUST,
       TERRARIA,
       STARBOUND,
+      UNTURNED,
     ]
   end
 end
