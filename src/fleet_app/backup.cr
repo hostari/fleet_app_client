@@ -23,7 +23,7 @@ module FleetApp
     def self.backup(
       host : String, game_name : String, server_id : String, body : String = "", environment : String = "production",
       username : String = "", world_name : String = "", backup_date : String = "", server_type : String = "", world_id : String = "",
-      backup_id : String = ""
+      backup_id : String = "", server_name : String = ""
     )
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
@@ -32,7 +32,7 @@ module FleetApp
           "username" => username, "world_name" => world_name,
           "backup_date" => backup_date, "server_type" => server_type,
           "environment" => environment, "world_id" => world_id,
-          "backup_id" => backup_id,
+          "backup_id" => backup_id, "server_name" => server_name,
         }).path,
         body: body
       )
@@ -41,7 +41,7 @@ module FleetApp
     def self.backup_with_auth(
       host : String, game_name : String, server_id : String, basic_auth : String, body : String = "",
       environment : String = "production", username : String = "", world_name : String = "", backup_date : String = "",
-      server_type : String = "", world_id : String = "", backup_id : String = ""
+      server_type : String = "", world_id : String = "", backup_id : String = "", server_name : String = ""
     )
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
@@ -50,7 +50,7 @@ module FleetApp
           "username" => username, "world_name" => world_name,
           "backup_date" => backup_date, "server_type" => server_type,
           "environment" => environment, "world_id" => world_id,
-          "backup_id" => backup_id,
+          "backup_id" => backup_id, "server_name" => server_name,
         }).path,
         body: body,
         basic_auth: basic_auth
