@@ -25,7 +25,8 @@ module FleetApp
       host : String, game_name : String, server_id : String, body : String = "", environment : String = "production",
       username : String = "", loaded_world_name : String = "", loaded_backup_date : String = "", server_type : String = "",
       loaded_world_id : String = "", loaded_backup_id : String = "", restoration_url : String = "",
-      restoration_world_name : String = "", restoration_backup_date : String = "", restoration_world_id : String = ""
+      restoration_world_name : String = "", restoration_backup_date : String = "", restoration_world_id : String = "",
+      server_name : String = ""
     )
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
@@ -38,6 +39,7 @@ module FleetApp
           "restoration_world_name" => restoration_world_name,
           "restoration_backup_date" => restoration_backup_date,
           "restoration_world_id" => restoration_world_id,
+          "server_name" => server_name,
         }).path,
         body: body
       )
@@ -48,7 +50,7 @@ module FleetApp
       environment : String = "production", username : String = "", loaded_world_name : String = "",
       loaded_backup_date : String = "", server_type : String = "", loaded_world_id : String = "",
       loaded_backup_id : String = "", restoration_url : String = "", restoration_world_name : String = "",
-      restoration_backup_date : String = "", restoration_world_id : String = ""
+      restoration_backup_date : String = "", restoration_world_id : String = "", server_name : String = ""
     )
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
@@ -61,6 +63,7 @@ module FleetApp
           "restoration_world_name" => restoration_world_name,
           "restoration_backup_date" => restoration_backup_date,
           "restoration_world_id" => restoration_world_id,
+          "server_name" => server_name,
         }).path,
         body: body,
         basic_auth: basic_auth
