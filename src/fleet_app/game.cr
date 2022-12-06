@@ -8,6 +8,8 @@ module FleetApp
     TERRARIA        = "terraria"
     STARBOUND       = "starbound"
     UNTURNED        = "unturned"
+    ARK_SE          = "ark_se"
+    # ARK_SE stands for Ark Survival Evolved
 
     LIST = [
       VALHEIM,
@@ -18,6 +20,7 @@ module FleetApp
       TERRARIA,
       STARBOUND,
       UNTURNED,
+      ARK_SE,
     ]
   end
 end
