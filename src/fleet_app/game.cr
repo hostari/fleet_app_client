@@ -9,8 +9,9 @@ module FleetApp
     STARBOUND       = "starbound"
     UNTURNED        = "unturned"
     ARK_SE          = "ark_se"
-    # ARK_SE stands for Ark Survival Evolved
+    THE_FOREST      = "the_forest"
 
+    # ARK_SE stands for Ark Survival Evolved
     LIST = [
       VALHEIM,
       CORE_KEEPER,
@@ -21,6 +22,7 @@ module FleetApp
       STARBOUND,
       UNTURNED,
       ARK_SE,
+      THE_FOREST,
     ]
   end
 end
