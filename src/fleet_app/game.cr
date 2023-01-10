@@ -10,6 +10,7 @@ module FleetApp
     UNTURNED        = "unturned"
     ARK_SE          = "ark_se"
     THE_FOREST      = "the_forest"
+    SATISFACTORY    = "satisfactory"
 
     # ARK_SE stands for Ark Survival Evolved
     LIST = [
@@ -23,6 +24,7 @@ module FleetApp
       UNTURNED,
       ARK_SE,
       THE_FOREST,
+      SATISFACTORY,
     ]
   end
 end
