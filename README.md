@@ -1,6 +1,6 @@
 # fleet_app_client
 
-TODO: Write a description here
+A crystal API client to interact with the Hostari fleet.
 
 ## Installation
 
@@ -58,12 +58,6 @@ Get CoreKeeper Game ID
 FleetApp::Server.get_details("2012197.xyz", "core_keeper", "1234")
 ```
 
-
-
-## Development
-
-TODO: Write development instructions here
-
 ## Contributing
 
 1. Fork it (<https://github.com/your-github-user/fleet_app_client/fork>)
@@ -74,4 +68,7 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [Pauline De Polonia](https://github.com/your-github-user) - creator and maintainer
+- [Pauline De Polonia](https://github.com/paula4230) - creator
+- [Manuel Tinio](https://github.com/Weltinio) - maintainer
+- [Xavi Ablaza](https://github.com/xaviablaza) - maintainer
+- [Rafael Cadorna](https://github.com/jcads) - maintainer
