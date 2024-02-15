@@ -1,11 +1,12 @@
 module FleetApp
+  # An interface for `HTTP::Client`.
   class Client
     property host : String
 
     def initialize(@host : String = FleetAppClient::HOST)
     end
 
-    # Sets the host. Alias of `host=`.
+    # Sets the host. This method is an alias of the setter method: Alias of `host=`.
     def set_host(host : String)
       @host = host
     end
