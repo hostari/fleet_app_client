@@ -10,22 +10,42 @@ module FleetApp
     # For example, you can send this: `{command: "echo 'foobar'"}.to_json`
     #
     # `environment` is an optional string that specifies which fleet app to send the request to.
-
-    def self.extract_hash(host : String, game_name : String, command : String = "", environment : String = "production", username : String = "")
+    def self.extract_hash(
+      host : String,
+      game_name : String,
+      command : String = "",
+      environment : String = "production",
+      username : String = ""
+    )
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: "/api/v1/mod_library/brooce_command?queue_name=#{host}",
-        body: {command: command}.to_json
+        path: build_path(host),
+        body: build_body(command)
       )
     end
 
-    def self.extract_hash_with_auth(host : String, game_name : String, basic_auth : String, command : String = "", environment : String = "production", username : String = "")
+    def self.extract_hash_with_auth(
+      host : String,
+      game_name : String,
+      basic_auth : String,
+      command : String = "",
+      environment : String = "production",
+      username : String = ""
+    )
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: "/api/v1/mod_library/brooce_command?queue_name=#{host}",
-        body: {command: command}.to_json,
+        path: build_path(host),
+        body: build_body(command),
         basic_auth: basic_auth
       )
+    end
+
+    private def self.build_path(host)
+      "/api/v1/mod_library/brooce_command?queue_name=#{host}"
+    end
+
+    private def self.build_body(command)
+      {command: command}.to_json
     end
   end
 end

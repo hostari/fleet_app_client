@@ -23,7 +23,8 @@ module FleetApp
       end
     end
 
-    def post(game_name : String, path : String, body : String)
+    # Executes a POST request to Fleet App.
+    def post(game_name : String, path : String, body : String) : ApiResult | ErrorResult
       begin
         raise FleetApp::Error.new("Game '#{game_name}' not supported.") if !FleetApp::Game::LIST.includes?(game_name)
 
@@ -39,7 +40,8 @@ module FleetApp
       end
     end
 
-    def post_with_auth(game_name : String, path : String, body : String, basic_auth : String)
+    # Executes a POST request with basic auth to Fleet App.
+    def post_with_auth(game_name : String, path : String, body : String, basic_auth : String) : ApiResult | ErrorResult
       begin
         raise FleetApp::Error.new("Game '#{game_name}' not supported.") if !FleetApp::Game::LIST.includes?(game_name)
 
@@ -55,7 +57,8 @@ module FleetApp
       end
     end
 
-    def get(game_name : String, path : String)
+    # Executes a GET request to Fleet App.
+    def get(game_name : String, path : String) : ApiResult | ErrorResult
       begin
         raise FleetApp::Error.new("Game '#{game_name}' not supported.") if !FleetApp::Game::LIST.includes?(game_name)
 

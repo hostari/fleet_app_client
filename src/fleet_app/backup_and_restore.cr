@@ -22,48 +22,79 @@ module FleetApp
     #
     # `environment` is an optional string that specifies which fleet app to send the request to.
     def self.backup_and_restore(
-      host : String, game_name : String, server_id : String, body : String = "", environment : String = "production",
-      username : String = "", loaded_world_name : String = "", loaded_backup_date : String = "", server_type : String = "",
-      loaded_world_id : String = "", loaded_backup_id : String = "", restoration_url : String = "",
-      restoration_world_name : String = "", restoration_backup_date : String = "", restoration_world_id : String = "",
+      host : String,
+      game_name : String,
+      server_id : String,
+      body : String = "",
+      environment : String = "production",
+      username : String = "",
+      loaded_world_name : String = "",
+      loaded_backup_date : String = "",
+      server_type : String = "",
+      loaded_world_id : String = "",
+      loaded_backup_id : String = "",
+      restoration_url : String = "",
+      restoration_world_name : String = "",
+      restoration_backup_date : String = "",
+      restoration_world_id : String = "",
       server_name : String = ""
     )
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
         path: ApiPath.new(
           game_name, server_id, host, "backup_and_restore", {
-          "username" => username, "loaded_world_name" => loaded_world_name,
-          "loaded_backup_date" => loaded_backup_date, "server_type" => server_type,
-          "environment" => environment, "loaded_world_id" => loaded_world_id,
-          "loaded_backup_id" => loaded_backup_id, "restoration_url" => restoration_url,
-          "restoration_world_name" => restoration_world_name,
+          "username"                => username,
+          "loaded_world_name"       => loaded_world_name,
+          "loaded_backup_date"      => loaded_backup_date,
+          "server_type"             => server_type,
+          "environment"             => environment,
+          "loaded_world_id"         => loaded_world_id,
+          "loaded_backup_id"        => loaded_backup_id,
+          "restoration_url"         => restoration_url,
+          "restoration_world_name"  => restoration_world_name,
           "restoration_backup_date" => restoration_backup_date,
-          "restoration_world_id" => restoration_world_id,
-          "server_name" => server_name,
+          "restoration_world_id"    => restoration_world_id,
+          "server_name"             => server_name,
         }).path,
         body: body
       )
     end
 
     def self.backup_and_restore_with_auth(
-      host : String, game_name : String, server_id : String, basic_auth : String, body : String = "",
-      environment : String = "production", username : String = "", loaded_world_name : String = "",
-      loaded_backup_date : String = "", server_type : String = "", loaded_world_id : String = "",
-      loaded_backup_id : String = "", restoration_url : String = "", restoration_world_name : String = "",
-      restoration_backup_date : String = "", restoration_world_id : String = "", server_name : String = ""
+      host : String,
+      game_name : String,
+      server_id : String,
+      basic_auth : String,
+      body : String = "",
+      environment : String = "production",
+      username : String = "",
+      loaded_world_name : String = "",
+      loaded_backup_date : String = "",
+      server_type : String = "",
+      loaded_world_id : String = "",
+      loaded_backup_id : String = "",
+      restoration_url : String = "",
+      restoration_world_name : String = "",
+      restoration_backup_date : String = "",
+      restoration_world_id : String = "",
+      server_name : String = ""
     )
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
         path: ApiPath.new(
           game_name, server_id, host, "backup_and_restore", {
-          "username" => username, "loaded_world_name" => loaded_world_name,
-          "loaded_backup_date" => loaded_backup_date, "server_type" => server_type,
-          "environment" => environment, "loaded_world_id" => loaded_world_id,
-          "loaded_backup_id" => loaded_backup_id, "restoration_url" => restoration_url,
-          "restoration_world_name" => restoration_world_name,
+          "username"                => username,
+          "loaded_world_name"       => loaded_world_name,
+          "loaded_backup_date"      => loaded_backup_date,
+          "server_type"             => server_type,
+          "environment"             => environment,
+          "loaded_world_id"         => loaded_world_id,
+          "loaded_backup_id"        => loaded_backup_id,
+          "restoration_url"         => restoration_url,
+          "restoration_world_name"  => restoration_world_name,
           "restoration_backup_date" => restoration_backup_date,
-          "restoration_world_id" => restoration_world_id,
-          "server_name" => server_name,
+          "restoration_world_id"    => restoration_world_id,
+          "server_name"             => server_name,
         }).path,
         body: body,
         basic_auth: basic_auth

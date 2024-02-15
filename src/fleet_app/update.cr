@@ -24,7 +24,7 @@ module FleetApp
     def self.update(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production", username : String = "")
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "update", {"username" => username}).path,
+        path: build_api_path(game_name, server_id, host, username),
         body: body
       )
     end
@@ -32,10 +32,18 @@ module FleetApp
     def self.update_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production", username : String = "")
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "update", {"username" => username}).path,
+        path: build_api_path(game_name, server_id, host, username),
         body: body,
         basic_auth: basic_auth
       )
+    end
+
+    private def self.build_api_path(game_name, server_id, host, username)
+      ApiPath.new(game_name, server_id, host, "update", params: payload(username)).path
+    end
+
+    private def self.payload(username)
+      {"username" => username}
     end
   end
 end

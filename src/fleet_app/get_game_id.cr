@@ -14,11 +14,21 @@ module FleetApp
     # or a `server_id` from VSH.
     #
     # `environment` is an optional string that specifies which fleet app to send the request to.
-    def self.get_game_id(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production")
+    def self.get_game_id(
+      host : String,
+      game_name : String,
+      server_id : String,
+      body : String = "",
+      environment : String = "production"
+    )
       FleetApp::ClientWrapper.new(environment).get(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, action: "game_id").path
+        path: build_api_path(game_name, server_id, host)
       )
+    end
+
+    private def self.build_api_path(game_name, server_id, host)
+      ApiPath.new(game_name, server_id, host, action: "game_id").path
     end
   end
 end

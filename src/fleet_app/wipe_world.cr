@@ -24,7 +24,7 @@ module FleetApp
     def self.wipe_world(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production", username : String = "", world_name : String = "")
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "wipe_world", {"username" => username, "world_name" => world_name}).path,
+        path: build_api_path(game_name, server_id, host, username, world_name),
         body: body
       )
     end
@@ -32,10 +32,18 @@ module FleetApp
     def self.wipe_world_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production", username : String = "", world_name : String = "")
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "wipe_world", {"username" => username, "world_name" => world_name}).path,
+        path: build_api_path(game_name, server_id, host, username, world_name),
         body: body,
         basic_auth: basic_auth
       )
+    end
+
+    private def self.build_api_path(game_name, server_id, host, username, world_name)
+      ApiPath.new(game_name, server_id, host, "wipe_world", params: payload(username, world_name)).path
+    end
+
+    private def self.payload(username, world_name)
+      {"username" => username, "world_name" => world_name}
     end
   end
 end

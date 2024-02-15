@@ -22,12 +22,18 @@ module FleetApp
     #
     # `environment` is an optional string that specifies which fleet app to send the request to.
     def self.update_config(
-      host : String, game_name : String, server_id : String, body : String = "", environment : String = "production",
-      username : String = "", world_name : String = "", server_type : String = ""
+      host : String,
+      game_name : String,
+      server_id : String,
+      body : String = "",
+      environment : String = "production",
+      username : String = "",
+      world_name : String = "",
+      server_type : String = ""
     )
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "update_config", {"username" => username, "world_name" => world_name, "server_type" => server_type}).path,
+        path: build_api_path(game_name, server_id, host, username, world_name, server_type),
         body: body
       )
     end
@@ -39,10 +45,14 @@ module FleetApp
     )
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, "update_config", {"username" => username, "world_name" => world_name, "server_type" => server_type}).path,
+        path: build_api_path(game_name, server_id, host, username, world_name, server_type),
         body: body,
         basic_auth: basic_auth
       )
+    end
+
+    private def self.build_api_path(game_name, server_id, host, username, world_name, server_type)
+      ApiPath.new(game_name, server_id, host, "update_config", {"username" => username, "world_name" => world_name, "server_type" => server_type}).path
     end
   end
 end

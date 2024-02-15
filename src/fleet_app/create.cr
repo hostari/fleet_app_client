@@ -18,21 +18,46 @@ module FleetApp
     # For example, you can send this: `{command: "echo 'foobar'"}.to_json`
     #
     # `environment` is an optional string that specifies which fleet app to send the request to.
-    def self.create(host : String, game_name : String, server_id : String, body : String = "", environment : String = "production", username : String = "", server_type : String = "")
+    def self.create(
+      host : String,
+      game_name : String,
+      server_id : String,
+      body : String = "",
+      environment : String = "production",
+      username : String = "",
+      server_type : String = ""
+    )
       FleetApp::ClientWrapper.new(environment).post(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, params: {"username" => username, "server_type" => server_type}).path,
+        path: build_api_path(game_name, server_id, host, username, server_type),
         body: body
       )
     end
 
-    def self.create_with_auth(host : String, game_name : String, server_id : String, basic_auth : String, body : String = "", environment : String = "production", username : String = "", server_type : String = "")
+    def self.create_with_auth(
+      host : String,
+      game_name : String,
+      server_id : String,
+      basic_auth : String,
+      body : String = "",
+      environment : String = "production",
+      username : String = "",
+      server_type : String = ""
+    )
       FleetApp::ClientWrapper.new(environment).post_with_auth(
         game_name: game_name,
-        path: ApiPath.new(game_name, server_id, host, params: {"username" => username, "server_type" => server_type}).path,
+        path: build_api_path(game_name, server_id, host, username, server_type),
         body: body,
         basic_auth: basic_auth
       )
+    end
+
+    private def self.build_api_path(game_name, server_id, host, username, server_type)
+      ApiPath.new(game_name, server_id, host, params: payload(username, server_type)).path
+    end
+
+    private def self.payload(username, server_type)
+      {"username" => username, "server_type" => server_type}
     end
   end
 end
