@@ -1,5 +1,5 @@
 name: fleet_app_client
-version: 1.0.0
+version: 1.0.1
 
 authors:
   - Pauline De Polonia <pauline@hostari.com>
@@ -7,7 +7,7 @@ authors:
   - Manuel Tinio <manuel@hostari.com>
   - Rafael Cadorna <rafael@hostari.com>
 
-crystal: ~> 1.6.2
+crystal: ~> 1.12.1
 
 development_dependencies:
   webmock:
