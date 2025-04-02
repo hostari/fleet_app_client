@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Set up Crystal cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       id: crystal-cache
       with:
         path: |
