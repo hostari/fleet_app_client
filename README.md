@@ -60,7 +60,7 @@ FleetApp::Server.get_details("2012197.xyz", "core_keeper", "1234")
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/fleet_app_client/fork>)
+1. Fork it (<https://github.com/hostari/fleet_app_client/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -68,7 +68,4 @@ FleetApp::Server.get_details("2012197.xyz", "core_keeper", "1234")
 
 ## Contributors
 
-- [Pauline De Polonia](https://github.com/paula4230) - creator
-- [Manuel Tinio](https://github.com/Weltinio) - maintainer
 - [Xavi Ablaza](https://github.com/xaviablaza) - maintainer
-- [Rafael Cadorna](https://github.com/jcads) - maintainer
